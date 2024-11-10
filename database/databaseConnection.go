@@ -37,9 +37,12 @@ func DBinstance() *mongo.Client {
 
 	// Test the connection
 	var result bson.M
-	if err := client.Database("admin").RunCommand(context.TODO(), bson.D{{"ping", 1}}).Decode(&result); err != nil {
+	if err := client.Database("admin").RunCommand(context.TODO(), bson.D{
+		{Key: "ping", Value: 1},
+	}).Decode(&result); err != nil {
 		log.Fatal("Failed to ping MongoDB:", err)
 	}
+
 	fmt.Println("Pinged your deployment. You successfully connected to MongoDB!")
 
 	return client

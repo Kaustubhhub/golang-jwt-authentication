@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 
+	// routes "github.com/kaustubhhub/jwt-gin-gonic/routes"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,8 +19,8 @@ func main() {
 	router := gin.New()
 	router.Use(gin.Logger())
 
-	// routes.authRoutes(router)
-	// routes.userRoutes(router)
+	routes.authRoutes(router)
+	routes.userRoutes(router)
 
 	router.GET("/api-1", func(c *gin.Context) {
 		fmt.Println("It reached to api-1")
